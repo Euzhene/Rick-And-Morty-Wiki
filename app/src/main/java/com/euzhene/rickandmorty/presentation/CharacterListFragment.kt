@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.euzhene.rickandmorty.R
 import com.euzhene.rickandmorty.databinding.FragmentCharacterListBinding
 import com.euzhene.rickandmorty.presentation.recyclerview.CharacterAdapter
+import com.euzhene.rickandmorty.presentation.recyclerview.CharacterLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -41,10 +44,53 @@ class CharacterListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        binding.recyclerView.adapter = pagingAdapter
+        setupAdapter()
         subscribeToSource()
         setupClickListener()
         setupSwipeListener()
+    }
+
+    private fun setupAdapter() {
+        val callback: () -> Unit = {
+            pagingAdapter.retry()
+        }
+        val adapters = pagingAdapter.withLoadStateHeaderAndFooter(
+            CharacterLoadStateAdapter(callback),
+            CharacterLoadStateAdapter(callback)
+        )
+        val concatenated = ConcatAdapter(pagingAdapter, adapters)
+        binding.recyclerView.adapter = concatenated
+
+        setConnectionStateListener()
+
+
+    }
+    private fun setConnectionStateListener() {
+        with(binding) {
+            btnRetry.setOnClickListener {
+                pagingAdapter.retry()
+            }
+            pagingAdapter.addLoadStateListener { loadState ->
+                loadState.source.refresh.run {
+                    if (this is LoadState.Error) {
+                        tvInfo.text = this.error.localizedMessage
+                    } else if (this is LoadState.Loading) {
+                        tvInfo.text = getString(R.string.loading_data)
+                    }
+                    pbLoadingData.visibility = toVisibility(this is LoadState.Loading)
+                    tvInfo.visibility = toVisibility(this !is LoadState.NotLoading)
+                    btnRetry.visibility = toVisibility(this is LoadState.Error)
+                    recyclerView.visibility = toVisibility(this is LoadState.NotLoading)
+                }
+            }
+        }
+    }
+
+
+    private fun toVisibility(constraint: Boolean) = if (constraint) {
+        View.VISIBLE
+    } else {
+        View.GONE
     }
 
     private fun subscribeToSource() {
@@ -75,12 +121,11 @@ class CharacterListFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                pagingAdapter.retry()
+                pagingAdapter.refresh()
             }
         }
         val itemTouchHelper = ItemTouchHelper(callback)
         itemTouchHelper.attachToRecyclerView(binding.recyclerView)
-
     }
 
     override fun onDestroyView() {

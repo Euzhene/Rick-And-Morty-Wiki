@@ -12,4 +12,7 @@
     <string name="gender">Gender</string>
     <string name="race">Race</string>
     <string name="location">Location</string>
+    <string name="retry">retry</string>
+    <string name="connection_failed">Connection failed</string>
+    <string name="loading_data">Loading data</string>
 </resources>

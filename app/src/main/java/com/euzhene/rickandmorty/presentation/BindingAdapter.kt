@@ -37,27 +37,6 @@ fun bindUrlImage(iv:ImageView, url:String) {
         .load(url)
         .into(iv)
 }
-@BindingAdapter("status")
-fun bindStatus(tv:TextView, status:String) {
-    tv.text = String.format(
-        tv.context.getString(R.string.character_status),
-        status
-    )
-}
-@BindingAdapter("location")
-fun bindLocation(tv:TextView, locationName:String) {
-    tv.text = String.format(
-        tv.context.getString(R.string.character_location),
-        locationName
-    )
-}
-@BindingAdapter("episode_count")
-fun bindEpisodeCount(tv:TextView, episodeCount:Int){
-    tv.text = String.format(
-        tv.context.getString(R.string.character_episode_count),
-        episodeCount.toString()
-    )
-}
 
 @BindingAdapter("background_url_image")
 fun bindBackgroundUrlImage(v:View, url:String) {
@@ -68,11 +47,6 @@ fun bindBackgroundUrlImage(v:View, url:String) {
             override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
                 v.background = resource
             }
-
-            override fun onLoadCleared(placeholder: Drawable?) {
-
-            }
-
+            override fun onLoadCleared(placeholder: Drawable?) {}
         })
-
 }

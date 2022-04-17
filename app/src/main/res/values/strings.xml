@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">RickAndMorty</string>
+    <string name="character_image">character image</string>
+    <string name="character_name">Name: %s</string>
+    <string name="character_race">Race: %s</string>
+    <string name="character_gender">Gender: %s</string>
+    <string name ="character_status">Status: %s</string>
+    <string name="character_location">Location: %s</string>
+    <string name="character_episode_count">Episode count: %s</string>
+    <string name="episode_count">Episode count</string>
+    <string name="status">Status</string>
+    <string name="gender">Gender</string>
+    <string name="race">Race</string>
+    <string name="location">Location</string>
+</resources>

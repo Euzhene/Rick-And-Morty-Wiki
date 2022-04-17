@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://raw.githubusercontent.com/adrianoluis/rickandmortyapi-java/mvn-repo' }
+
+    }
+}
+rootProject.name = "RickAndMorty"
+include ':app'

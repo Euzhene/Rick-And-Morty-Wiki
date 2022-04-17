@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".presentation.InfoFragment">
+
+    <data>
+
+        <variable
+            name="character"
+            type="com.euzhene.rickandmorty.domain.entity.Character" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rick"
+        app:background_url_image="@{character.image}">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.7"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_character_image"
+            android:layout_width="250dp"
+            android:layout_height="260dp"
+            android:contentDescription="@string/character_image"
+            android:scaleType="fitXY"
+            android:src="@drawable/rick"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            app:url_image="@{String.valueOf( character.image)}" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/tv_character_value"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:name="@{character.name}"
+            tools:text="Rick Sanchez" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_character_image"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/tv_race_title"
+                style="@style/tv_character_title"
+                android:text="@string/race"
+                app:layout_constraintBottom_toTopOf="@+id/tv_race"
+                app:layout_constraintEnd_toEndOf="@+id/tv_race"
+                app:layout_constraintEnd_toStartOf="@+id/tv_status_title"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_race"
+                style="@style/tv_character_value"
+                android:layout_marginBottom="160dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_status"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@{character.species}"
+                tools:text="Human" />
+
+            <TextView
+                android:id="@+id/tv_gender_title"
+                style="@style/tv_character_title"
+                android:text="@string/gender"
+                app:layout_constraintBottom_toTopOf="@+id/tv_gender"
+                app:layout_constraintEnd_toStartOf="@+id/tv_episode_count_title"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_status_title" />
+
+            <TextView
+                android:id="@+id/tv_gender"
+                style="@style/tv_character_value"
+                android:text="@{character.gender}"
+                app:layout_constraintEnd_toStartOf="@+id/tv_episode_count"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_status"
+                app:layout_constraintTop_toTopOf="@+id/tv_status"
+                tools:text="Male" />
+
+            <TextView
+                android:id="@+id/tv_status_title"
+                style="@style/tv_character_title"
+                android:text="@string/status"
+                app:layout_constraintBottom_toTopOf="@+id/tv_status"
+                app:layout_constraintEnd_toStartOf="@+id/tv_gender_title"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_race_title" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                style="@style/tv_character_value"
+                app:layout_constraintEnd_toStartOf="@+id/tv_gender"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_race"
+                app:layout_constraintTop_toTopOf="@+id/tv_race"
+                android:text="@{character.status}"
+                tools:text="Alive" />
+
+            <TextView
+                android:id="@+id/tv_episode_count_title"
+                style="@style/tv_character_title"
+                android:text="@string/episode_count"
+                app:layout_constraintBottom_toTopOf="@+id/tv_episode_count"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_gender_title" />
+
+            <TextView
+                android:id="@+id/tv_episode_count"
+                style="@style/tv_character_value"
+                android:text="@{String.valueOf(character.episode.size())}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tv_gender"
+                app:layout_constraintTop_toTopOf="@+id/tv_gender"
+                tools:text="51" />
+
+            <TextView
+                android:id="@+id/tv_location_title"
+                style="@style/tv_character_title"
+                android:text="@string/location"
+                app:layout_constraintBottom_toTopOf="@+id/tv_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                style="@style/tv_character_value"
+                android:layout_marginBottom="64dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@{character.location.name}"
+                tools:text="Citadel of Ricks" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

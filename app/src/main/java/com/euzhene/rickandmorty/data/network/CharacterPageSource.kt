@@ -25,6 +25,7 @@ class CharacterPageSource(
             val characterResponse = response.body() as CharacterResponse
 
             val characters = characterResponse.results
+
             val prevKey = if (pageIndex == 1) null else pageIndex - 1
             val nextKey = if (characters.size < pageSize) null else pageIndex + 1
             LoadResult.Page(characters, prevKey, nextKey)

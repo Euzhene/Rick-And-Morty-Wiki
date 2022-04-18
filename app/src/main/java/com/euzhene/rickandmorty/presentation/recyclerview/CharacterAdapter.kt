@@ -2,8 +2,6 @@ package com.euzhene.rickandmorty.presentation.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.LoadState
-import androidx.paging.LoadStateAdapter
 import androidx.paging.PagingDataAdapter
 import com.euzhene.rickandmorty.databinding.PartialCharacterBinding
 import com.euzhene.rickandmorty.domain.entity.Character

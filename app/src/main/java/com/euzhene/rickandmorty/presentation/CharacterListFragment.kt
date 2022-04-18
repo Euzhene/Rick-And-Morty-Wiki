@@ -9,8 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.ConcatAdapter
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.RecyclerView
 import com.euzhene.rickandmorty.R
 import com.euzhene.rickandmorty.databinding.FragmentCharacterListBinding
 import com.euzhene.rickandmorty.presentation.recyclerview.CharacterAdapter
@@ -47,7 +45,6 @@ class CharacterListFragment : Fragment() {
         setupAdapter()
         subscribeToSource()
         setupClickListener()
-        setupSwipeListener()
     }
 
     private fun setupAdapter() {
@@ -108,24 +105,6 @@ class CharacterListFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
-    }
-
-    private fun setupSwipeListener() {
-        val callback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.DOWN) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                pagingAdapter.refresh()
-            }
-        }
-        val itemTouchHelper = ItemTouchHelper(callback)
-        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
     }
 
     override fun onDestroyView() {

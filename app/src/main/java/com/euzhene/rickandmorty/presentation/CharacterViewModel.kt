@@ -8,19 +8,22 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.euzhene.rickandmorty.data.mapper.CharacterMapper
 import com.euzhene.rickandmorty.data.CharacterPageSource
+import com.euzhene.rickandmorty.data.network.CharacterService
 import com.euzhene.rickandmorty.data.network.RetrofitInstance
 import kotlinx.coroutines.flow.Flow
 import com.euzhene.rickandmorty.presentation.model.Character
 
-class CharacterViewModel : ViewModel() {
-    private val retrofitApi = RetrofitInstance.api
+class CharacterViewModel(
+    private val apiService: CharacterService,
+    private val mapper: CharacterMapper
+) : ViewModel() {
     val charactersFlow: Flow<PagingData<Character>> = Pager(
         config = PagingConfig(
             pageSize = 20,
             initialLoadSize = 20,
             prefetchDistance = 15,
         ),
-        pagingSourceFactory = { CharacterPageSource(retrofitApi, CharacterMapper()) }
+        pagingSourceFactory = { CharacterPageSource(apiService, mapper) }
     ).flow
         .cachedIn(viewModelScope)
 }

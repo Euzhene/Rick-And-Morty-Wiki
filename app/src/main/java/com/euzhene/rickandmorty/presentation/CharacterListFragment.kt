@@ -11,19 +11,27 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.ConcatAdapter
 import com.euzhene.rickandmorty.R
 import com.euzhene.rickandmorty.databinding.FragmentCharacterListBinding
+import com.euzhene.rickandmorty.di.CharacterApp
 import com.euzhene.rickandmorty.presentation.adapter.CharacterAdapter
 import com.euzhene.rickandmorty.presentation.adapter.CharacterLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 class CharacterListFragment : Fragment() {
+    private val component by lazy {
+        (requireActivity().application as CharacterApp).component
+    }
+
     private var _binding: FragmentCharacterListBinding? = null
     private val binding: FragmentCharacterListBinding
         get() = _binding ?: throw RuntimeException("FragmentCharacterListBinding = null")
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy {
-        ViewModelProvider(this)[CharacterViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[CharacterViewModel::class.java]
     }
 
     private val pagingAdapter = CharacterAdapter()
@@ -32,6 +40,7 @@ class CharacterListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        component.inject(this)
         _binding = FragmentCharacterListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -62,6 +71,7 @@ class CharacterListFragment : Fragment() {
 
 
     }
+
     private fun setConnectionStateListener() {
         with(binding) {
             btnRetry.setOnClickListener {

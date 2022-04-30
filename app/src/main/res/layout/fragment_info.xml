@@ -5,10 +5,9 @@
     tools:context=".presentation.InfoFragment">
 
     <data>
-
         <variable
             name="character"
-            type="com.euzhene.rickandmorty.domain.entity.Character" />
+            type="com.euzhene.rickandmorty.presentation.model.Character" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +37,7 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_name"
-            app:url_image="@{String.valueOf( character.image)}" />
+            app:url_image="@{String.valueOf(character.image)}" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -131,7 +130,7 @@
             <TextView
                 android:id="@+id/tv_episode_count"
                 style="@style/tv_character_value"
-                android:text="@{String.valueOf(character.episode.size())}"
+                android:text="@{String.valueOf(character.episodeCount)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/tv_gender"
@@ -153,7 +152,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:text="@{character.location.name}"
+                android:text="@{character.location}"
                 tools:text="Citadel of Ricks" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

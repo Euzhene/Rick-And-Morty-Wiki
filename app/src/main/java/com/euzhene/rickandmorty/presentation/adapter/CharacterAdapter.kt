@@ -1,4 +1,4 @@
-package com.euzhene.rickandmorty.presentation.recyclerview
+package com.euzhene.rickandmorty.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

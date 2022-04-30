@@ -1,8 +1,6 @@
-package com.euzhene.rickandmorty.presentation.recyclerview
+package com.euzhene.rickandmorty.presentation.adapter
 
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.euzhene.rickandmorty.databinding.ActivityMainBinding
 import com.euzhene.rickandmorty.databinding.PartialCharacterBinding
 
 class CharacterViewHolder(

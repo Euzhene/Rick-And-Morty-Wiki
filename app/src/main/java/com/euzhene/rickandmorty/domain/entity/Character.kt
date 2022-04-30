@@ -2,7 +2,9 @@ package com.euzhene.rickandmorty.domain.entity
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 data class Character(
     val created: String,
     val episode: List<String>,

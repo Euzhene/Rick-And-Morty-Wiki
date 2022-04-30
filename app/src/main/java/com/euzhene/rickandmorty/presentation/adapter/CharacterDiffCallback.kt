@@ -1,4 +1,4 @@
-package com.euzhene.rickandmorty.presentation.recyclerview
+package com.euzhene.rickandmorty.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.euzhene.rickandmorty.domain.entity.Character

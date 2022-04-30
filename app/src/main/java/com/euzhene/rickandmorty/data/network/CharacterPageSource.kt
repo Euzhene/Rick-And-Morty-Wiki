@@ -2,7 +2,6 @@ package com.euzhene.rickandmorty.data.network
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.euzhene.rickandmorty.data.network.model.CharacterResponse
 import com.euzhene.rickandmorty.domain.entity.Character
 import retrofit2.HttpException
 import java.io.IOException
@@ -22,7 +21,7 @@ class CharacterPageSource(
 
         return try {
             val response = characterService.getCharacters(pageIndex)
-            val characterResponse = response.body() as CharacterResponse
+            val characterResponse = response.body()!!
 
             val characters = characterResponse.results
 

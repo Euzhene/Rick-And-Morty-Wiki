@@ -11,8 +11,8 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.ConcatAdapter
 import com.euzhene.rickandmorty.R
 import com.euzhene.rickandmorty.databinding.FragmentCharacterListBinding
-import com.euzhene.rickandmorty.presentation.recyclerview.CharacterAdapter
-import com.euzhene.rickandmorty.presentation.recyclerview.CharacterLoadStateAdapter
+import com.euzhene.rickandmorty.presentation.adapter.CharacterAdapter
+import com.euzhene.rickandmorty.presentation.adapter.CharacterLoadStateAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

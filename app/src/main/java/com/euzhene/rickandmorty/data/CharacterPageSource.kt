@@ -1,14 +1,18 @@
-package com.euzhene.rickandmorty.data.network
+package com.euzhene.rickandmorty.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.euzhene.rickandmorty.data.network.model.CharacterResponse
-import com.euzhene.rickandmorty.domain.entity.Character
+import com.euzhene.rickandmorty.data.mapper.CharacterMapper
+import com.euzhene.rickandmorty.data.network.CharacterService
+import com.euzhene.rickandmorty.presentation.model.Character
 import retrofit2.HttpException
 import java.io.IOException
+import javax.inject.Inject
 
-class CharacterPageSource(
+
+class CharacterPageSource @Inject constructor(
     private val characterService: CharacterService,
+    private val mapper: CharacterMapper
 ) : PagingSource<Int, Character>() {
     override fun getRefreshKey(state: PagingState<Int, Character>): Int? {
         val anchorPosition = state.anchorPosition ?: return null
@@ -22,9 +26,12 @@ class CharacterPageSource(
 
         return try {
             val response = characterService.getCharacters(pageIndex)
-            val characterResponse = response.body() as CharacterResponse
+            val characterResponse = response.body()!!
 
-            val characters = characterResponse.results
+            val charactersResponse = characterResponse.results
+            val characters = charactersResponse.map {
+                mapper.mapDtoToEntity(it)
+            }
 
             val prevKey = if (pageIndex == 1) null else pageIndex - 1
             val nextKey = if (characters.size < pageSize) null else pageIndex + 1

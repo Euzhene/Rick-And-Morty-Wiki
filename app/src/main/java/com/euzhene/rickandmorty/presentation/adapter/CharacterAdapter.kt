@@ -1,10 +1,11 @@
-package com.euzhene.rickandmorty.presentation.recyclerview
+package com.euzhene.rickandmorty.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import com.euzhene.rickandmorty.databinding.PartialCharacterBinding
-import com.euzhene.rickandmorty.domain.entity.Character
+import com.euzhene.rickandmorty.presentation.model.Character
+
 
 class CharacterAdapter : PagingDataAdapter<Character, CharacterViewHolder>(CharacterDiffCallback())
 {

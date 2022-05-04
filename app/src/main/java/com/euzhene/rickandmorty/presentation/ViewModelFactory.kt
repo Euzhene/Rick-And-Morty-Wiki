@@ -16,6 +16,6 @@ class ViewModelFactory @Inject constructor(
         if (modelClass == CharacterViewModel::class.java) {
             return CharacterViewModel(apiService, mapper) as T
         }
-        return throw RuntimeException("Unknown view model $modelClass")
+        throw RuntimeException("Unknown view model $modelClass")
     }
 }

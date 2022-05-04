@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 
-object RetrofitInstance {
+class RetrofitInstance {
     private val moshi by lazy {
         Moshi.Builder().build()
     }
@@ -16,5 +16,7 @@ object RetrofitInstance {
             .build()
             .create(CharacterService::class.java)
     }
-    private const val BASE_URL = "https://rickandmortyapi.com/api/"
+    companion object {
+        private const val BASE_URL = "https://rickandmortyapi.com/api/"
+    }
 }

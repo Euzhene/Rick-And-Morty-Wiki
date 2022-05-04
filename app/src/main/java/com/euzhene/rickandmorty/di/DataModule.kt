@@ -9,6 +9,6 @@ import dagger.Provides
 class DataModule {
     @Provides
     fun provideCharacterService(): CharacterService {
-        return RetrofitInstance.api
+        return RetrofitInstance().api
     }
 }

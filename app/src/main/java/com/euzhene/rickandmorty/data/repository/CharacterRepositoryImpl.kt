@@ -9,8 +9,9 @@ import com.euzhene.rickandmorty.domain.repository.CharacterRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.lang.RuntimeException
+import javax.inject.Inject
 
-class CharacterRepositoryImpl(
+class CharacterRepositoryImpl @Inject constructor (
     private val mapper: CharacterMapper,
     private val characterService: CharacterService,
     private val remoteDataSource: CharacterRemoteDataSource

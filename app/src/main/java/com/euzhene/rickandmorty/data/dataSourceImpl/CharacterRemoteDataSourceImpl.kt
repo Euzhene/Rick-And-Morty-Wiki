@@ -9,8 +9,9 @@ import com.euzhene.rickandmorty.data.network.CharacterService
 import com.euzhene.rickandmorty.data.paging.CharacterPageSource
 import com.euzhene.rickandmorty.domain.model.Character
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class CharacterRemoteDataSourceImpl(
+class CharacterRemoteDataSourceImpl @Inject constructor(
     private val apiService: CharacterService,
     private val mapper: CharacterMapper,
 ):CharacterRemoteDataSource {

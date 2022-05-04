@@ -4,7 +4,7 @@ import com.euzhene.rickandmorty.presentation.CharacterListFragment
 import dagger.Component
 
 @ApplicationScope
-@Component(modules = [DataModule::class])
+@Component(modules = [DataModule::class, DomainModule::class])
 interface AppComponent {
     fun inject(fragment:CharacterListFragment)
 

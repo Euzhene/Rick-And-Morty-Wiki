@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.euzhene.rickandmorty.databinding.FragmentInfoBinding
-import com.euzhene.rickandmorty.presentation.model.Character
+import com.euzhene.rickandmorty.domain.model.Character
 
 class InfoFragment : Fragment() {
     private var _binding: FragmentInfoBinding? = null

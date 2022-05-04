@@ -2,7 +2,7 @@ package com.euzhene.rickandmorty.data.mapper
 
 import com.euzhene.rickandmorty.data.network.dto.CharacterDto
 import com.euzhene.rickandmorty.di.ApplicationScope
-import com.euzhene.rickandmorty.presentation.model.Character
+import com.euzhene.rickandmorty.domain.model.Character
 import javax.inject.Inject
 
 @ApplicationScope

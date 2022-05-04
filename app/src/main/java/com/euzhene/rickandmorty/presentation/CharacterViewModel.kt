@@ -9,9 +9,8 @@ import androidx.paging.cachedIn
 import com.euzhene.rickandmorty.data.mapper.CharacterMapper
 import com.euzhene.rickandmorty.data.CharacterPageSource
 import com.euzhene.rickandmorty.data.network.CharacterService
-import com.euzhene.rickandmorty.data.network.RetrofitInstance
 import kotlinx.coroutines.flow.Flow
-import com.euzhene.rickandmorty.presentation.model.Character
+import com.euzhene.rickandmorty.domain.model.Character
 
 class CharacterViewModel(
     private val apiService: CharacterService,

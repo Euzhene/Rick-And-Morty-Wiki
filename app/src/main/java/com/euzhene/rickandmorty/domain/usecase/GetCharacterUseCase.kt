@@ -1,11 +1,11 @@
-package com.euzhene.rickandmorty.domain.use_case
+package com.euzhene.rickandmorty.domain.usecase
 
-import com.euzhene.rickandmorty.domain.repository.CharacterRepository
 import com.euzhene.rickandmorty.domain.model.Character
+import com.euzhene.rickandmorty.domain.repository.CharacterRepository
 import kotlinx.coroutines.flow.Flow
 
 class GetCharacterUseCase(private val repository: CharacterRepository) {
     operator fun invoke(id: Int): Flow<Character> {
-        return repository.getCharacter(id)
+        return repository.getCharacterInfo(id)
     }
 }

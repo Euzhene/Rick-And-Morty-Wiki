@@ -1,4 +1,4 @@
-package com.euzhene.rickandmorty.data
+package com.euzhene.rickandmorty.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

@@ -31,7 +31,7 @@ class CharacterListFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[CharacterViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[CharacterListViewModel::class.java]
     }
 
     private val pagingAdapter = CharacterAdapter()
@@ -102,8 +102,8 @@ class CharacterListFragment : Fragment() {
 
     private fun subscribeToSource() {
         lifecycleScope.launch {
-            viewModel.charactersFlow.collectLatest {
-                pagingAdapter.submitData(it)
+            viewModel.charactersList.collectLatest {
+               pagingAdapter.submitData(it)
             }
         }
     }

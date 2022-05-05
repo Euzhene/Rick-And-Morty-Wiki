@@ -8,6 +8,8 @@ Things I used:
 - Clean arch
 - MVVM
 - Retrofit
+- Glide
+- JUnit
 <br></br>
 The app handles network issues, so it won't crash if you do not have internet access
 <br></br>

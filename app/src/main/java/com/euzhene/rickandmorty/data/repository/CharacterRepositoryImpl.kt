@@ -8,7 +8,6 @@ import com.euzhene.rickandmorty.domain.model.Character
 import com.euzhene.rickandmorty.domain.repository.CharacterRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.lang.RuntimeException
 import javax.inject.Inject
 
 class CharacterRepositoryImpl @Inject constructor (
@@ -24,6 +23,7 @@ class CharacterRepositoryImpl @Inject constructor (
                 val character = mapper.mapDtoToEntity(characterDao)
                 emit(character)
             } else {
+              //  emit(null)
                 throw RuntimeException("Response is unsuccessful " +
                         "due to reason ${response.errorBody()}")
             }

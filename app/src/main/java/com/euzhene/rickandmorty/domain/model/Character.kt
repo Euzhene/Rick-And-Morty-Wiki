@@ -1,9 +1,5 @@
 package com.euzhene.rickandmorty.domain.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-@Parcelize
 data class Character(
     val episodeCount: Int,
     val gender: String,
@@ -13,4 +9,8 @@ data class Character(
     val name: String,
     val species: String,
     val status: String,
-) : Parcelable
+) {
+    companion object {
+        const val UNKNOWN_ID = -1
+    }
+}

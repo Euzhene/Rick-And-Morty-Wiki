@@ -22,6 +22,7 @@ import javax.inject.Inject
 class CharacterListFragment : Fragment() {
     private val component by lazy {
         (requireActivity().application as CharacterApp).component
+            .fragmentComponentFactory().create(0)
     }
 
     private var _binding: FragmentCharacterListBinding? = null
@@ -111,7 +112,7 @@ class CharacterListFragment : Fragment() {
     private fun setupClickListener() {
         pagingAdapter.onItemClick = {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.main_container, InfoFragment.newInstance(it))
+                .replace(R.id.main_container, CharacterInfoFragment.newInstance(it.id))
                 .addToBackStack(null)
                 .commit()
         }

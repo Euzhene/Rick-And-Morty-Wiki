@@ -18,11 +18,17 @@ class CharacterRemoteDataSourceImpl @Inject constructor(
     override fun getCharacters(): Flow<PagingData<Character>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
-                initialLoadSize = 20,
-                prefetchDistance = 15,
+                pageSize = PAGE_SIZE,
+                initialLoadSize = INITIAL_LOAD_SIZE,
+                prefetchDistance = PREFETCH_DISTANCE,
             ),
             pagingSourceFactory = { CharacterPageSource(apiService, mapper) }
         ).flow
+    }
+
+    companion object {
+        private const val PAGE_SIZE = 20
+        private const val INITIAL_LOAD_SIZE = 20
+        private const val PREFETCH_DISTANCE = 15
     }
 }

@@ -22,6 +22,7 @@ import javax.inject.Inject
 class CharacterListFragment : Fragment() {
     private val component by lazy {
         (requireActivity().application as CharacterApp).component
+            .fragmentComponentFactory().create(0)
     }
 
     private var _binding: FragmentCharacterListBinding? = null
@@ -31,7 +32,7 @@ class CharacterListFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
     private val viewModel by lazy {
-        ViewModelProvider(this, viewModelFactory)[CharacterViewModel::class.java]
+        ViewModelProvider(this, viewModelFactory)[CharacterListViewModel::class.java]
     }
 
     private val pagingAdapter = CharacterAdapter()
@@ -102,8 +103,8 @@ class CharacterListFragment : Fragment() {
 
     private fun subscribeToSource() {
         lifecycleScope.launch {
-            viewModel.charactersFlow.collectLatest {
-                pagingAdapter.submitData(it)
+            viewModel.charactersList.collectLatest {
+               pagingAdapter.submitData(it)
             }
         }
     }
@@ -111,7 +112,7 @@ class CharacterListFragment : Fragment() {
     private fun setupClickListener() {
         pagingAdapter.onItemClick = {
             requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.main_container, InfoFragment.newInstance(it))
+                .replace(R.id.main_container, CharacterInfoFragment.newInstance(it.id))
                 .addToBackStack(null)
                 .commit()
         }

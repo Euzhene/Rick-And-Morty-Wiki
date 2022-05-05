@@ -2,18 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.InfoFragment">
+    tools:context=".presentation.CharacterInfoFragment">
 
     <data>
         <variable
             name="character"
-            type="com.euzhene.rickandmorty.presentation.model.Character" />
+            type="com.euzhene.rickandmorty.domain.model.Character" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rick"
+        tools:background="@drawable/rick"
         app:background_url_image="@{character.image}">
 
         <View
@@ -36,7 +36,7 @@
             android:layout_marginStart="8dp"
             android:contentDescription="@string/character_image"
             android:scaleType="fitXY"
-            android:src="@drawable/rick"
+            tools:src="@drawable/rick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

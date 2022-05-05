@@ -1,15 +1,15 @@
-package com.euzhene.rickandmorty.data.network.model
+package com.euzhene.rickandmorty.data.network.dto
 
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class GetResponse(
-    val info: InfoResponse,
-    val results: List<CharacterResponse>
+data class GetResponseDto(
+    val info: InfoDto,
+    val results: List<CharacterDto>
 )
 
 @JsonClass(generateAdapter = true)
-data class InfoResponse(
+data class InfoDto(
     val count: Int,
     val next: String?,
     val pages: Int,
@@ -18,15 +18,15 @@ data class InfoResponse(
 
 
 @JsonClass(generateAdapter = true)
-data class CharacterResponse(
+data class CharacterDto(
     val created: String,
     val episode: List<String>,
     val gender: String,
     val id: Int,
     val image: String,
-    val location: LocationResponse?,
+    val location: LocationDto?,
     val name: String,
-    val origin: OriginResponse?,
+    val origin: OriginDto?,
     val species: String,
     val status: String,
     val type: String,
@@ -34,13 +34,13 @@ data class CharacterResponse(
 )
 
 @JsonClass(generateAdapter = true)
-data class LocationResponse(
+data class LocationDto(
     val name: String,
     val url: String
 )
 
 @JsonClass(generateAdapter = true)
-data class OriginResponse(
+data class OriginDto(
     val name: String,
     val url: String
 )

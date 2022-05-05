@@ -1,7 +1,7 @@
 package com.euzhene.rickandmorty.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.euzhene.rickandmorty.presentation.model.Character
+import com.euzhene.rickandmorty.domain.model.Character
 
 class CharacterDiffCallback :
     DiffUtil.ItemCallback<Character>() {

@@ -1,5 +1,5 @@
 # RickAndMorty
-The app for monitoring all characters from Rick and Morty University.
+The app for monitoring all the characters from the Rick and Morty University.
 Things I used:
 - Paging3
 - Dagger2
@@ -11,7 +11,7 @@ Things I used:
 - Glide
 - JUnit
 <br></br>
-The app handles network issues, so it won't crash if you do not have internet access
+The app handles network issues, so it will not crash if you do not have internet access
 <br></br>
 Screenshots:
 <br></br>
